@@ -12,7 +12,7 @@
 	};
 
 	async function getItems(): Promise<Item[]> {
-		const res = await fetch("http://localhost:3000/items");
+		const res = await fetch("http://192.168.2.10:3000/items");
 		const items = await res.json();
 		if (!res.ok) {
 			throw new Error(items);
@@ -32,7 +32,7 @@
 		let ean = Number(evt.target.elements[3].value);
 		let price = Number(evt.target.elements[4].value);
 
-		await fetch('http://localhost:3000/items', {
+		await fetch('http://192.168.3.10:3000/items', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ name, url, category, ean, price })
@@ -42,14 +42,14 @@
 	}
 
 	async function deleteItem(id:number) {
-		await fetch(`http://localhost:3000/items/${id}`, {
+		await fetch(`http://192.168.3.10:3000/items/${id}`, {
 			method: 'delete'
 		});
 	}
 
 	async function generateSnapshot() {
 		const threads = 15;
-		fetch(`http://localhost:3000/scrape`, {
+		fetch(`http://192.168.3.10:3000/scrape`, {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ threads })
