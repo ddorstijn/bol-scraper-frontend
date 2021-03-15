@@ -1,6 +1,6 @@
 <script lang="ts">
 	let creatingItem = false;
-	const api = "http://api.fortuous.ml";
+	const api = "https://api.fortuous.ml";
 
 	type Item = {
 		id: number;
